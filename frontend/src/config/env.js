@@ -5,9 +5,9 @@ const getApiUrl = () => {
     return import.meta.env.VITE_API_URL;
   }
   
-  // En production, utiliser l'URL relative (même domaine)
+  // En production, utiliser l'URL du backend Vercel séparé
   if (import.meta.env.PROD) {
-    return '/api';
+    return 'https://english-training-api.vercel.app/api';
   }
   
   // En développement, utiliser l'URL locale
