@@ -1,8 +1,9 @@
 // Configuration des URLs selon l'environnement
 const getApiUrl = () => {
-  // En production (Fly.io), utiliser l'URL du backend déployé
+  // En production Vercel, utiliser l'URL relative (même domaine)
   if (import.meta.env.PROD) {
-    return 'https://english-training-api.fly.dev/api';
+    // Si déployé sur Vercel avec backend séparé
+    return import.meta.env.VITE_API_URL || 'https://english-training-api.vercel.app/api';
   }
   
   // En développement, utiliser l'URL locale

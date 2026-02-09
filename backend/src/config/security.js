@@ -104,13 +104,23 @@ export const corsOptions = {
       'http://localhost:5173', // Vite
       'http://localhost:4200', // Angular
       'https://english-training-web.fly.dev', // Frontend Fly.io
+      'https://english-training.vercel.app', // Frontend Vercel
+      /\.vercel\.app$/, // Tous les domaines Vercel
       process.env.FRONTEND_URL
     ].filter(Boolean);
 
     // En développement, autoriser toutes les origines
     if (process.env.NODE_ENV === 'development') {
       callback(null, true);
-    } else if (!origin || whitelist.includes(origin)) {
+    } else if (!origin) {
+      // Autoriser les requêtes sans origine (comme les apps mobiles)
+      callback(null, true);
+    } else if (whitelist.some(allowed => {
+      if (allowed instanceof RegExp) {
+        return allowed.test(origin);
+      }
+      return allowed === origin;
+    })) {
       callback(null, true);
     } else {
       callback(new Error('Non autorisé par CORS'));
