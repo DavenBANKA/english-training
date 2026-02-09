@@ -103,6 +103,7 @@ export const corsOptions = {
       'http://localhost:3001',
       'http://localhost:5173', // Vite
       'http://localhost:4200', // Angular
+      'https://english-training-web.fly.dev', // Frontend Fly.io
       process.env.FRONTEND_URL
     ].filter(Boolean);
 
