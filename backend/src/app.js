@@ -108,15 +108,15 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Routes API
-app.use('/api/auth', authRoutes);
-app.use('/api/test', testRoutes);
-app.use('/api/questions', questionRoutes);
-app.use('/api/speaking', speakingRoutes);
-app.use('/api/writing', writingRoutes);
-app.use('/api/answers', answersRoutes);
-app.use('/api/results', resultsRoutes);
-app.use('/api/admin', adminRoutes);
+// Routes API (sans préfixe /api car Vercel l'ajoute déjà)
+app.use('/auth', authRoutes);
+app.use('/test', testRoutes);
+app.use('/questions', questionRoutes);
+app.use('/speaking', speakingRoutes);
+app.use('/writing', writingRoutes);
+app.use('/answers', answersRoutes);
+app.use('/results', resultsRoutes);
+app.use('/admin', adminRoutes);
 
 // ============================================
 // GESTION DES ERREURS

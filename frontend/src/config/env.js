@@ -7,7 +7,7 @@ const getApiUrl = () => {
   
   // En production, utiliser l'URL du backend Vercel séparé
   if (import.meta.env.PROD) {
-    return 'https://english-training-api.vercel.app/api';
+    return 'https://english-training-backend.vercel.app/api';
   }
   
   // En développement, utiliser l'URL locale
