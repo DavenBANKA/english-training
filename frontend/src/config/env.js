@@ -1,9 +1,13 @@
 // Configuration des URLs selon l'environnement
 const getApiUrl = () => {
-  // En production Vercel, utiliser l'URL relative (même domaine)
+  // Si variable d'environnement définie, l'utiliser
+  if (import.meta.env.VITE_API_URL) {
+    return import.meta.env.VITE_API_URL;
+  }
+  
+  // En production, utiliser l'URL relative (même domaine)
   if (import.meta.env.PROD) {
-    // Si déployé sur Vercel avec backend séparé
-    return import.meta.env.VITE_API_URL || 'https://english-training-api.vercel.app/api';
+    return '/api';
   }
   
   // En développement, utiliser l'URL locale
