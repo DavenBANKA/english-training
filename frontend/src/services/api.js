@@ -40,7 +40,9 @@ class ApiService {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Une erreur est survenue');
+        const error = new Error(data.error || 'Une erreur est survenue');
+        error.details = data.details;
+        throw error;
       }
 
       return data;
@@ -57,11 +59,11 @@ class ApiService {
       skipAuth: true,
       body: JSON.stringify({ email, password, full_name }),
     });
-    
+
     if (data.success && data.data.session) {
       this.setAuthToken(data.data.session.access_token);
     }
-    
+
     return data;
   }
 
@@ -71,11 +73,11 @@ class ApiService {
       skipAuth: true,
       body: JSON.stringify({ email, password }),
     });
-    
+
     if (data.success && data.data.access_token) {
       this.setAuthToken(data.data.access_token);
     }
-    
+
     return data;
   }
 
@@ -83,7 +85,7 @@ class ApiService {
     const data = await this.request('/auth/logout', {
       method: 'POST',
     });
-    
+
     this.removeAuthToken();
     return data;
   }
@@ -96,7 +98,7 @@ class ApiService {
   async getQuestions(skill, level = null, limit = 20) {
     const params = new URLSearchParams({ skill, limit });
     if (level) params.append('level', level);
-    
+
     return await this.request(`/questions?${params}`);
   }
 
@@ -110,7 +112,7 @@ class ApiService {
       },
       body: formData,
     });
-    
+
     return await response.json();
   }
 

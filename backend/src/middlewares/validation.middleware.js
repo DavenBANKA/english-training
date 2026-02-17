@@ -5,8 +5,14 @@ import { body, param, query, validationResult } from 'express-validator';
  */
 export const handleValidationErrors = (req, res, next) => {
   const errors = validationResult(req);
-  
+
   if (!errors.isEmpty()) {
+    console.warn('Validation Errors:', errors.array().map(err => ({
+      path: err.path,
+      msg: err.msg,
+      value: err.value
+    })));
+
     return res.status(400).json({
       success: false,
       error: 'Erreur de validation',
@@ -16,7 +22,7 @@ export const handleValidationErrors = (req, res, next) => {
       }))
     });
   }
-  
+
   next();
 };
 
@@ -139,10 +145,10 @@ export const validateUUID = (paramName) => [
 export const sanitizeInput = (req, res, next) => {
   // Supprimer les propriétés dangereuses
   const dangerousProps = ['__proto__', 'constructor', 'prototype'];
-  
+
   const sanitize = (obj) => {
     if (typeof obj !== 'object' || obj === null) return obj;
-    
+
     for (const key of Object.keys(obj)) {
       if (dangerousProps.includes(key)) {
         delete obj[key];
@@ -150,13 +156,13 @@ export const sanitizeInput = (req, res, next) => {
         sanitize(obj[key]);
       }
     }
-    
+
     return obj;
   };
-  
+
   if (req.body) req.body = sanitize(req.body);
   if (req.query) req.query = sanitize(req.query);
   if (req.params) req.params = sanitize(req.params);
-  
+
   next();
 };

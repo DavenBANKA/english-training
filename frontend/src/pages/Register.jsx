@@ -42,7 +42,11 @@ function Register() {
       await register(formData.email, formData.password, formData.full_name);
       navigate('/test');
     } catch (err) {
-      setError(err.message || 'Une erreur est survenue lors de l\'inscription');
+      if (err.details && Array.isArray(err.details)) {
+        setError(err.details.map(d => d.message).join(', '));
+      } else {
+        setError(err.message || 'Une erreur est survenue lors de l\'inscription');
+      }
     } finally {
       setLoading(false);
     }
@@ -100,6 +104,9 @@ function Register() {
               placeholder="••••••••"
               required
             />
+            <small className="form-help">
+              Au moins 6 caractères, une majuscule, une minuscule et un chiffre.
+            </small>
           </div>
 
           <div className="form-group">

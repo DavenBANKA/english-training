@@ -29,17 +29,24 @@ class AuthController {
         }
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase Register Error:', error.message);
+        return res.status(error.status || 400).json({
+          success: false,
+          error: error.message || "Erreur lors de l'inscription"
+        });
+      }
 
       res.status(201).json({
         success: true,
-        message: 'Inscription réussie',
+        message: 'Inscription réussie. Veuillez vérifier votre boîte mail si nécessaire.',
         data: {
           user: data.user,
           session: data.session
         }
       });
     } catch (error) {
+      console.error('Register Controller Error:', error);
       next(error);
     }
   }
@@ -63,7 +70,20 @@ class AuthController {
         password
       });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase Login Error:', error.message);
+        return res.status(error.status || 401).json({
+          success: false,
+          error: error.message || 'Identifiants invalides'
+        });
+      }
+
+      if (!data?.session) {
+        return res.status(401).json({
+          success: false,
+          error: 'Session non trouvée. Veuillez vérifier votre boîte mail si la confirmation est requise.'
+        });
+      }
 
       res.json({
         success: true,
@@ -74,6 +94,7 @@ class AuthController {
         }
       });
     } catch (error) {
+      console.error('Login Controller Error:', error);
       next(error);
     }
   }

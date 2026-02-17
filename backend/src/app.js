@@ -1,6 +1,8 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 import cors from 'cors';
-import dotenv from 'dotenv';
 import compression from 'compression';
 import mongoSanitize from 'express-mongo-sanitize';
 import hpp from 'hpp';
@@ -32,7 +34,7 @@ import {
   addSecurityHeaders
 } from './middlewares/security.middleware.js';
 
-dotenv.config();
+// Middlewares
 
 const app = express();
 

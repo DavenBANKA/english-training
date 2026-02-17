@@ -1,18 +1,17 @@
 services:
-  # Backend Web Service (Node.js API)
+  # Monolith Service (Frontend builds then Backend serves everything)
   - type: web
-    name: efset-backend
+    name: efset-monolith
     env: node
     plan: free
-    buildCommand: npm install
-    startCommand: npm start
-    rootContext: backend
+    buildCommand: npm run build
+    startCommand: cd backend && npm start
     healthCheckPath: /health
     envVars:
       - key: NODE_ENV
         value: production
       - key: SUPABASE_URL
-        sync: false # À remplir dans le dashboard Render
+        sync: false
       - key: SUPABASE_ANON_KEY
         sync: false
       - key: SUPABASE_SERVICE_ROLE_KEY
@@ -20,18 +19,6 @@ services:
       - key: GEMINI_API_KEYS
         sync: false
       - key: FRONTEND_URL
-        sync: false # L'URL de votre site static (ex: https://efset-frontend.onrender.com)
+        sync: false
       - key: BACKEND_URL
-        sync: false # L'URL de ce backend (ex: https://efset-backend.onrender.com)
-
-  # Frontend Static Site (Vite)
-  - type: static
-    name: efset-frontend
-    env: static
-    plan: free
-    buildCommand: npm install && npm run build
-    publishPath: dist
-    rootContext: frontend
-    envVars:
-      - key: VITE_API_URL
-        sync: false # L'URL du backend + /api (ex: https://efset-backend.onrender.com/api)
+        sync: false

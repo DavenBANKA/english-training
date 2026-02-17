@@ -20,7 +20,11 @@ function Login() {
       await login(email, password);
       navigate('/test');
     } catch (err) {
-      setError(err.message || 'Email ou mot de passe incorrect');
+      if (err.details && Array.isArray(err.details)) {
+        setError(err.details.map(d => d.message).join(', '));
+      } else {
+        setError(err.message || 'Email ou mot de passe incorrect');
+      }
     } finally {
       setLoading(false);
     }
