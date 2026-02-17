@@ -108,15 +108,21 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Routes API (sans préfixe /api car Vercel l'ajoute déjà)
-app.use('/auth', authRoutes);
-app.use('/test', testRoutes);
-app.use('/questions', questionRoutes);
-app.use('/speaking', speakingRoutes);
-app.use('/writing', writingRoutes);
-app.use('/answers', answersRoutes);
-app.use('/results', resultsRoutes);
-app.use('/admin', adminRoutes);
+// Création d'un routeur pour l'API
+const apiRouter = express.Router();
+
+apiRouter.use('/auth', authRoutes);
+apiRouter.use('/test', testRoutes);
+apiRouter.use('/questions', questionRoutes);
+apiRouter.use('/speaking', speakingRoutes);
+apiRouter.use('/writing', writingRoutes);
+apiRouter.use('/answers', answersRoutes);
+apiRouter.use('/results', resultsRoutes);
+apiRouter.use('/admin', adminRoutes);
+
+// Utilisation du routeur avec le préfixe /api
+app.use('/api', apiRouter);
+
 
 // ============================================
 // GESTION DES ERREURS

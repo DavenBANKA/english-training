@@ -1,0 +1,17 @@
+0d56879 HEAD@{0}: commit: Update API URL to ngrok HTTPS
+caff334 HEAD@{1}: commit: Switch frontend backend URL to dedicated server IP
+bf70977 HEAD@{2}: commit: Add empty build script for Vercel backend deployment
+08bf8b5 HEAD@{3}: commit: Simplify backend vercel.json: use rewrites instead of builds/routes
+857cd22 HEAD@{4}: commit: Fix API routes for Vercel: remove /api prefix from Express routes
+7ff8f54 HEAD@{5}: commit: Fix logger for Vercel serverless: use console only in production
+1ba42e8 HEAD@{6}: commit: Fix backend vercel.json paths for separate deployment
+bf27f56 HEAD@{7}: commit: Update frontend API URL for separate backend deployment
+5c90583 HEAD@{8}: commit: Improve Vercel serverless error handling with detailed JSON responses
+cc3c729 HEAD@{9}: commit: Update .env.example to use NODE_ENV=production
+df4b8b2 HEAD@{10}: commit: Fix serverless handler to always return JSON and add env setup guide
+d01d23c HEAD@{11}: commit: Fix Vercel monorepo deployment: use relative API URLs and correct routing
+4c46abb HEAD@{12}: commit: Add Vercel deployment configuration and documentation
+6289696 HEAD@{13}: commit: Add next steps guide for Fly.io deployment
+5fece5b HEAD@{14}: commit: Add Fly.io deployment configuration with Docker, CORS updates, and deployment scripts
+6c7096c HEAD@{15}: Branch: renamed refs/heads/master to refs/heads/main
+6c7096c HEAD@{17}: commit (initial): Initial commit: English Training Platform with responsive design
