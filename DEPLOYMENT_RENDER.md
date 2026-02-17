@@ -20,15 +20,15 @@ Ce fichier contient TOUT (Tables, RLS, et les 90 questions Reading/Listening/Spe
 4. Render détectera le fichier `render.yaml` et créera le service **efset-monolith**.
 5. Cliquez sur **"Apply"**.
 
-### 3. Configurer les Variables d'Environnement
+### 3. Configurer les Variables d'Environnement (SUR RENDER)
 Dans le tableau de bord Render, allez dans **Environment** pour votre service et remplissez :
 
-- `SUPABASE_URL` : URL de votre projet Supabase.
-- `SUPABASE_ANON_KEY` : Clé anonyme.
+- `SUPABASE_URL` : Votre URL Supabase.
+- `SUPABASE_ANON_KEY` : Votre clé Supabase.
 - `SUPABASE_SERVICE_ROLE_KEY` : Clé service role.
-- `GEMINI_API_KEYS` : Vos clés Gemini (séparées par des virgules).
-- `FRONTEND_URL` : L'URL finale fournie par Render (ex: `https://efset-monolith.onrender.com`).
-- `BACKEND_URL` : La même URL que `FRONTEND_URL` (nécessaire pour le keep-alive).
+- `GEMINI_API_KEYS` : Vos clés Gemini.
+- `FRONTEND_URL` : `https://english-training-jhys.onrender.com`
+- `BACKEND_URL` : `https://english-training-jhys.onrender.com` (C'est ce qui active le Ping / Anti-sommeil)
 - `NODE_ENV` : Déjà réglé sur `production` par le système.
 
 ## Pourquoi vois-je "development" en local ?

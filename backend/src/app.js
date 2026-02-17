@@ -42,47 +42,27 @@ import {
 
 const app = express();
 
-// 1. Headers de base et compression
-app.use(helmetConfig);
+// 1. Logging et compression
+app.use(requestLogger);
 app.use(compression());
 
-// 2. Logging des requêtes
-app.use(requestLogger);
+// 2. CORS (Autorise TOUT pour simplifier)
+app.use(cors(corsOptions));
 
-// 3. Servir les fichiers statiques (AVANT les middlewares de sécurité API)
-// Cela évite que CORS ou checkOrigin ne bloquent les images/CSS du site
+// 3. Servir les fichiers statiques du frontend
 const distPath = path.join(__dirname, '../../frontend/dist');
 app.use(express.static(distPath));
 
-// 4. Middlewares de parsing (AVANT le rate limiting ou la validation)
-app.use(express.json({ limit: '10mb' }));
-app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+// 4. Parsing des requêtes
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 
-// 5. Middlewares de sécurité pour l'API
-// On ne les applique qu'aux routes commençant par /api
-const apiSecurity = [
-  cors(corsOptions),
-  globalLimiter,
-  detectMaliciousBots,
-  checkOrigin,
-  limitRequestSize,
-  detectSQLInjection,
-  detectXSS,
-  mongoSanitize(),
-  hpp(),
-  sanitizeInput,
-  addSecurityHeaders,
-  preventTranslation,
-  addTranslationWarning
-];
-
-// Health check (Simple, sans sécurité lourde)
+// Health check
 app.get('/health', (req, res) => {
   res.json({
     success: true,
-    message: 'API EFSET opérationnelle',
-    timestamp: new Date().toISOString(),
-    environment: process.env.NODE_ENV || 'development'
+    message: 'API EFSET opérationnelle (Mode Simplifié)',
+    timestamp: new Date().toISOString()
   });
 });
 
@@ -98,22 +78,16 @@ apiRouter.use('/answers', answersRoutes);
 apiRouter.use('/results', resultsRoutes);
 apiRouter.use('/admin', adminRoutes);
 
-// Application de la sécurité et des routes API
-app.use('/api', apiSecurity, apiRouter);
+// Utilisation du routeur avec le préfixe /api (SANS middlewares de sécurité complexes)
+app.use('/api', apiRouter);
 
 // Toutes les autres requêtes redirigent vers l'index.html du frontend (pour le SPA routing)
-// On ne le fait qu'en production et si ce n'est pas une requête API
 app.get('*', (req, res, next) => {
   if (req.path.startsWith('/api') || req.path === '/health') {
     return next();
   }
-
-  // Servir index.html pour le routing React
   res.sendFile(path.join(distPath, 'index.html'), (err) => {
-    if (err) {
-      // Si le fichier n'existe pas, on passe à l'erreur 404
-      next();
-    }
+    if (err) next();
   });
 });
 
