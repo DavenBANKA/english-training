@@ -6,6 +6,12 @@ import cors from 'cors';
 import compression from 'compression';
 import mongoSanitize from 'express-mongo-sanitize';
 import hpp from 'hpp';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+// URL/Path helper
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // Configuration
 import { helmetConfig, globalLimiter, corsOptions } from './config/security.js';
@@ -34,73 +40,43 @@ import {
   addSecurityHeaders
 } from './middlewares/security.middleware.js';
 
-// Middlewares
-
 const app = express();
 
-// ============================================
-// SÉCURITÉ - Middlewares de base
-// ============================================
-
-// Helmet - Sécurisation des headers HTTP
+// 1. Headers de base et compression
 app.use(helmetConfig);
-
-// Compression des réponses
 app.use(compression());
 
-// CORS sécurisé
-app.use(cors(corsOptions));
+// 2. Logging des requêtes
+app.use(requestLogger);
 
-// Limite de taille des requêtes
+// 3. Servir les fichiers statiques (AVANT les middlewares de sécurité API)
+// Cela évite que CORS ou checkOrigin ne bloquent les images/CSS du site
+const distPath = path.join(__dirname, '../../frontend/dist');
+app.use(express.static(distPath));
+
+// 4. Middlewares de parsing (AVANT le rate limiting ou la validation)
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Sanitization contre les injections NoSQL
-app.use(mongoSanitize());
+// 5. Middlewares de sécurité pour l'API
+// On ne les applique qu'aux routes commençant par /api
+const apiSecurity = [
+  cors(corsOptions),
+  globalLimiter,
+  detectMaliciousBots,
+  checkOrigin,
+  limitRequestSize,
+  detectSQLInjection,
+  detectXSS,
+  mongoSanitize(),
+  hpp(),
+  sanitizeInput,
+  addSecurityHeaders,
+  preventTranslation,
+  addTranslationWarning
+];
 
-// Protection contre HTTP Parameter Pollution
-app.use(hpp());
-
-// ============================================
-// SÉCURITÉ - Middlewares personnalisés
-// ============================================
-
-// Logging des requêtes
-app.use(requestLogger);
-
-// Rate limiting global
-app.use('/api/', globalLimiter);
-
-// Détection des bots malveillants
-app.use(detectMaliciousBots);
-
-// Vérification de l'origine
-app.use(checkOrigin);
-
-// Limite de taille des requêtes
-app.use(limitRequestSize);
-
-// Détection SQL Injection
-app.use(detectSQLInjection);
-
-// Détection XSS
-app.use(detectXSS);
-
-// Sanitization des entrées
-app.use(sanitizeInput);
-
-// Headers de sécurité supplémentaires
-app.use(addSecurityHeaders);
-
-// Empêcher la traduction automatique
-app.use(preventTranslation);
-app.use(addTranslationWarning);
-
-// ============================================
-// ROUTES
-// ============================================
-
-// Health check (sans rate limiting)
+// Health check (Simple, sans sécurité lourde)
 app.get('/health', (req, res) => {
   res.json({
     success: true,
@@ -110,7 +86,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Création d'un routeur pour l'API
+// Création du routeur API
 const apiRouter = express.Router();
 
 apiRouter.use('/auth', authRoutes);
@@ -122,37 +98,24 @@ apiRouter.use('/answers', answersRoutes);
 apiRouter.use('/results', resultsRoutes);
 apiRouter.use('/admin', adminRoutes);
 
-// Utilisation du routeur avec le préfixe /api
-app.use('/api', apiRouter);
+// Application de la sécurité et des routes API
+app.use('/api', apiSecurity, apiRouter);
 
+// Toutes les autres requêtes redirigent vers l'index.html du frontend (pour le SPA routing)
+// On ne le fait qu'en production et si ce n'est pas une requête API
+app.get('*', (req, res, next) => {
+  if (req.path.startsWith('/api') || req.path === '/health') {
+    return next();
+  }
 
-// ============================================
-// GESTION DES ERREURS
-// ============================================
-
-// ============================================
-// SERVIR LE FRONTEND (En production)
-// ============================================
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// En production, servir les fichiers statiques du dossier frontend/dist
-if (process.env.NODE_ENV === 'production') {
-  const distPath = path.join(__dirname, '../../frontend/dist');
-  app.use(express.static(distPath));
-
-  // Toutes les autres requêtes redirigent vers l'index.html du frontend (pour le SPA routing)
-  app.get('*', (req, res, next) => {
-    // Si c'est une requête API, on laisse passer
-    if (req.path.startsWith('/api') || req.path === '/health') {
-      return next();
+  // Servir index.html pour le routing React
+  res.sendFile(path.join(distPath, 'index.html'), (err) => {
+    if (err) {
+      // Si le fichier n'existe pas, on passe à l'erreur 404
+      next();
     }
-    res.sendFile(path.join(distPath, 'index.html'));
   });
-}
+});
 
 app.use(notFound);
 app.use(errorHandler);
