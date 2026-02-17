@@ -128,6 +128,30 @@ app.use('/api', apiRouter);
 // GESTION DES ERREURS
 // ============================================
 
+// ============================================
+// SERVIR LE FRONTEND (En production)
+// ============================================
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// En production, servir les fichiers statiques du dossier frontend/dist
+if (process.env.NODE_ENV === 'production') {
+  const distPath = path.join(__dirname, '../../frontend/dist');
+  app.use(express.static(distPath));
+
+  // Toutes les autres requêtes redirigent vers l'index.html du frontend (pour le SPA routing)
+  app.get('*', (req, res, next) => {
+    // Si c'est une requête API, on laisse passer
+    if (req.path.startsWith('/api') || req.path === '/health') {
+      return next();
+    }
+    res.sendFile(path.join(distPath, 'index.html'));
+  });
+}
+
 app.use(notFound);
 app.use(errorHandler);
 

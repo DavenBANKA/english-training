@@ -9,7 +9,7 @@ const getApiUrl = () => {
 
   // 2. Fallbacks de production
   if (import.meta.env.PROD) {
-    // L'URL sera injectée via VITE_API_URL sur Render
+    // Dans un déploiement monolithique, l'API est sur le même domaine
     return '/api';
   }
 
