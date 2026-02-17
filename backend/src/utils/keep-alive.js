@@ -7,10 +7,7 @@ import logger from '../config/logger.js';
  */
 const keepAlive = () => {
     // En mode monolithique, l'URL du backend est la même que le frontend
-    const PUBLIC_URL = process.env.BACKEND_URL || process.env.FRONTEND_URL;
-    const LOCAL_URL = `http://localhost:${process.env.PORT || 3000}`;
-
-    const pingUrl = PUBLIC_URL ? `${PUBLIC_URL}/health` : LOCAL_URL;
+    const pingUrl = 'https://conseiluxlanguage.org/health';
     const INTERVAL = 8 * 60 * 1000; // 8 minutes
 
     console.log(`📡 Keep-Alive activé sur : ${pingUrl}`);
