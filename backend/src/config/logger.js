@@ -6,7 +6,7 @@ import path from 'path';
  */
 const transports = [];
 
-// En production (Vercel), utiliser seulement la console
+// En production, utiliser seulement la console
 if (process.env.NODE_ENV === 'production') {
   transports.push(
     new winston.transports.Console({
@@ -56,7 +56,7 @@ const logger = winston.createLogger({
  */
 export const requestLogger = (req, res, next) => {
   const start = Date.now();
-  
+
   res.on('finish', () => {
     const duration = Date.now() - start;
     const logData = {
@@ -67,14 +67,14 @@ export const requestLogger = (req, res, next) => {
       ip: req.ip || req.connection.remoteAddress,
       userAgent: req.get('user-agent')
     };
-    
+
     if (res.statusCode >= 400) {
       logger.error('Request failed', logData);
     } else {
       logger.info('Request completed', logData);
     }
   });
-  
+
   next();
 };
 

@@ -104,8 +104,6 @@ export const corsOptions = {
       'http://localhost:5173', // Vite
       'http://localhost:4200', // Angular
       'https://english-training-web.fly.dev', // Frontend Fly.io
-      'https://english-training.vercel.app', // Frontend Vercel
-      /\.vercel\.app$/, // Tous les domaines Vercel
       process.env.FRONTEND_URL
     ].filter(Boolean);
 
