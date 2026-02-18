@@ -12,11 +12,11 @@ function Confidentialite() {
           <h1>Politique de Confidentialité</h1>
           <p className="page-subtitle">Dernière mise à jour : 22 janvier 2026</p>
         </div>
-        
+
         <div className="page-body">
           <section className="legal-section">
             <h2>Introduction</h2>
-            <p>English Training accorde une grande importance à la protection de vos données personnelles. Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons, partageons et protégeons vos informations personnelles.</p>
+            <p>Conseilux Language Academy accorde une grande importance à la protection de vos données personnelles. Cette politique de confidentialité vous informe sur la manière dont nous collectons, utilisons, partageons et protégeons vos informations personnelles.</p>
           </section>
 
           <section className="legal-section">
@@ -89,7 +89,7 @@ function Confidentialite() {
               <li><strong>Droit d'opposition :</strong> vous opposer au traitement de vos données</li>
               <li><strong>Droit de retirer votre consentement :</strong> à tout moment</li>
             </ul>
-            <p>Pour exercer ces droits, contactez-nous à : <strong>privacy@englishtraining.fr</strong></p>
+            <p>Pour exercer ces droits, contactez-nous à : <strong>privacy@conseiluxtraining.com</strong></p>
           </section>
 
           <section className="legal-section">
@@ -129,9 +129,9 @@ function Confidentialite() {
           <section className="legal-section">
             <h2>Contact</h2>
             <p>Pour toute question concernant cette politique de confidentialité ou vos données personnelles :</p>
-            <p><strong>Email :</strong> privacy@englishtraining.fr</p>
-            <p><strong>Adresse :</strong> English Training, 123 Avenue des Champs-Élysées, 75008 Paris, France</p>
-            <p><strong>Délégué à la Protection des Données :</strong> dpo@englishtraining.fr</p>
+            <p><strong>Email :</strong> privacy@conseiluxtraining.com</p>
+            <p><strong>Adresse :</strong> Conseilux Language Academy, 123 Avenue des Champs-Élysées, 75008 Paris, France</p>
+            <p><strong>Délégué à la Protection des Données :</strong> dpo@conseiluxtraining.com</p>
           </section>
 
           <section className="legal-section">

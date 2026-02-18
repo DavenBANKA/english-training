@@ -27,6 +27,7 @@ import Confidentialite from './pages/Confidentialite'
 import CGV from './pages/CGV'
 import Login from './pages/Login'
 import Register from './pages/Register'
+import Admin from './pages/Admin'
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
       <AuthProvider>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/comment-ca-marche" element={<CommentCaMarche />} />

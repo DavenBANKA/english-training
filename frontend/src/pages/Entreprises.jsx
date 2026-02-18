@@ -7,7 +7,7 @@ function Entreprises() {
   return (
     <div className="page">
       <Navbar />
-      
+
       <section className="page-hero">
         <div className="page-hero-content">
           <h1 className="page-title">Pour les entreprises</h1>
@@ -22,7 +22,7 @@ function Entreprises() {
           <div className="content-section">
             <h2>Évaluez et formez vos collaborateurs</h2>
             <p>
-              English Training propose des solutions sur mesure pour les entreprises souhaitant évaluer 
+              Conseilux Language Academy propose des solutions sur mesure pour les entreprises souhaitant évaluer
               et améliorer le niveau d'anglais de leurs équipes.
             </p>
           </div>

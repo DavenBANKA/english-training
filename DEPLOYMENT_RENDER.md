@@ -27,8 +27,8 @@ Dans le tableau de bord Render, allez dans **Environment** pour votre service et
 - `SUPABASE_ANON_KEY` : Votre clé Supabase.
 - `SUPABASE_SERVICE_ROLE_KEY` : Clé service role.
 - `GEMINI_API_KEYS` : Vos clés Gemini.
-- `FRONTEND_URL` : `https://english-training-jhys.onrender.com`
-- `BACKEND_URL` : `https://english-training-jhys.onrender.com` (C'est ce qui active le Ping / Anti-sommeil)
+- `FRONTEND_URL` : `https://conseiluxlanguage.org`
+- `BACKEND_URL` : `https://conseiluxlanguage.org` (C'est ce qui active le Ping / Anti-sommeil)
 - `NODE_ENV` : Déjà réglé sur `production` par le système.
 
 ## Pourquoi vois-je "development" en local ?

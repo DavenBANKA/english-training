@@ -143,6 +143,11 @@ class ApiService {
       body: JSON.stringify({ test_id }),
     });
   }
+
+  // Admin endpoints
+  async getAdminUsers() {
+    return await this.request('/admin/users');
+  }
 }
 
 export default new ApiService();

@@ -20,9 +20,9 @@ function WhyTestSection() {
         <div className="why-test-content">
           <div className="left-content">
             <h2 className="why-test-title">
-              Pourquoi faire ce<br />test avec English Training ?
+              Pourquoi faire ce<br />test avec Conseilux Language Academy ?
             </h2>
-            
+
             <ul className="why-test-list">
               <li><strong>Inscription gratuite et rapide</strong></li>
               <li>Test complet : environ 90 minutes</li>
@@ -43,7 +43,7 @@ function WhyTestSection() {
               <button className="btn-start-main" onClick={handleStartTest}>Je commence le test</button>
               <p className="cta-info">Gratuit et sans inscription</p>
             </div>
-            
+
             <div className="flag-decoration">
               <img src="/american-flag.jpg" alt="American Flag" className="flag-image" />
             </div>

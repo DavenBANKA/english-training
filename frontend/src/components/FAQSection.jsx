@@ -7,10 +7,10 @@ function FAQSection() {
   const faqs = [
     {
       question: "Quel est le meilleur test de niveau d'anglais ?",
-      answer: "Notre test English Training est aligné sur les référentiels CECRL (A1 à C2) et offre une évaluation complète de vos 4 compétences : Listening, Reading, Writing et Speaking. Il est rapide (10-15 minutes) et utilise l'IA pour analyser vos réponses écrites et orales."
+      answer: "Notre test Conseilux Language Academy est aligné sur les référentiels CECRL (A1 à C2) et offre une évaluation complète de vos 4 compétences : Listening, Reading, Writing et Speaking. Il est rapide (10-15 minutes) et utilise l'IA pour analyser vos réponses écrites et orales."
     },
     {
-      question: "Le test de niveau d'anglais English Training est-il gratuit ?",
+      question: "Le test de niveau d'anglais Conseilux Language Academy est-il gratuit ?",
       answer: "Le test nécessite une inscription gratuite pour sauvegarder vos résultats et générer votre certificat personnalisé. Une fois inscrit, vous pouvez passer le test complet et accéder à votre certificat détaillé avec vos scores par compétence."
     },
     {
@@ -44,11 +44,11 @@ function FAQSection() {
 
           <div className="faq-list">
             {faqs.map((faq, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 className={`faq-item ${openIndex === index ? 'active' : ''}`}
               >
-                <button 
+                <button
                   className="faq-question"
                   onClick={() => toggleFAQ(index)}
                 >

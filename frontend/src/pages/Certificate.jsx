@@ -35,7 +35,7 @@ function Certificate() {
       }
     } catch (err) {
       console.error('Error loading data:', err);
-      
+
       // Si erreur d'authentification, rediriger vers login
       if (err.message.includes('Token') || err.message.includes('Unauthorized')) {
         navigate('/login');
@@ -69,7 +69,7 @@ function Certificate() {
         logging: false,
         useCORS: true
       });
-      
+
       return canvas.toDataURL('image/png');
     } catch (error) {
       console.error('Error converting to image:', error);
@@ -173,7 +173,7 @@ function Certificate() {
 
         {/* Header */}
         <header className="certificate-header">
-          <h1 className="title-font platform-name">CONSEILUX TRAINING AND DEVELOPMENT</h1>
+          <h1 className="title-font platform-name">CONSEILUX LANGUAGE ACADEMY</h1>
           <div className="ornamental-line"></div>
           <p className="subtitle-text">CENTRE DE FORMATION PROFESSIONNELLE</p>
         </header>
@@ -247,13 +247,13 @@ function Certificate() {
           <div className="signature-line"></div>
           <p className="subtitle-font director-name">Ghislain CODJO</p>
           <p className="director-title">Directeur Général</p>
-          <p className="company-name">Conseilux Training and Development</p>
+          <p className="company-name">Conseilux Language Academy</p>
         </footer>
 
         {/* Decorative Seal */}
-        <img 
-          src="/logo.jpeg" 
-          alt="Logo" 
+        <img
+          src="/logo.jpeg"
+          alt="Logo"
           className="seal"
         />
       </main>

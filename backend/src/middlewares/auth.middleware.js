@@ -53,9 +53,11 @@ export const requireAdmin = async (req, res, next) => {
       });
     }
 
-    // Vérifier le rôle dans les métadonnées utilisateur
-    const isAdmin = req.user.user_metadata?.role === 'admin' || 
-                    req.user.app_metadata?.role === 'admin';
+    // Vérifier le rôle dans les métadonnées utilisateur ou l'email spécifique
+    const adminEmails = ['contact@conseiluxtraining.com', 'lionesspretty7@gmail.com'];
+    const isAdmin = req.user.user_metadata?.role === 'admin' ||
+      req.user.app_metadata?.role === 'admin' ||
+      adminEmails.includes(req.user.email);
 
     if (!isAdmin) {
       return res.status(403).json({

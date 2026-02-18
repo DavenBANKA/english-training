@@ -57,8 +57,8 @@ function Register() {
       <div className="auth-box">
         <div className="auth-header">
           <Link to="/" className="auth-logo">
-            <img src="/logo.jpeg" alt="English Training" />
-            <span>English Training</span>
+            <img src="/logo.jpeg" alt="Conseilux Language Academy" />
+            <span>Conseilux Language Academy</span>
           </Link>
           <h1>Créer un compte</h1>
           <p>Commencez votre évaluation d'anglais</p>

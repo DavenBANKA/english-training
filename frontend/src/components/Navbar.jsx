@@ -6,7 +6,7 @@ import './Navbar.css'
 function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const { logout, isAuthenticated } = useAuth()
+  const { logout, isAuthenticated, user } = useAuth()
   const navigate = useNavigate()
 
   const handleMouseEnter = (menu) => {
@@ -53,11 +53,11 @@ function Navbar() {
         <div className="navbar">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
             <img src="/logo.jpeg" alt="Logo" className="logo-img" />
-            <span className="logo-text">English Training</span>
+            <span className="logo-text">Conseilux Language Academy</span>
           </Link>
 
           {/* Hamburger Button */}
-          <button 
+          <button
             className={`hamburger ${mobileMenuOpen ? 'active' : ''}`}
             onClick={toggleMobileMenu}
             aria-label="Menu"
@@ -66,11 +66,11 @@ function Navbar() {
             <span></span>
             <span></span>
           </button>
-          
+
           <ul className="navbar-menu desktop-menu">
             <li><Link to="/">Accueil</Link></li>
-            
-            <li 
+
+            <li
               className="dropdown"
               onMouseEnter={() => handleMouseEnter('ressources')}
               onMouseLeave={handleMouseLeave}
@@ -85,8 +85,8 @@ function Navbar() {
                 </div>
               )}
             </li>
-            
-            <li 
+
+            <li
               className="dropdown"
               onMouseEnter={() => handleMouseEnter('apropos')}
               onMouseLeave={handleMouseLeave}
@@ -101,8 +101,8 @@ function Navbar() {
                 </div>
               )}
             </li>
-            
-            <li 
+
+            <li
               className="dropdown"
               onMouseEnter={() => handleMouseEnter('plus')}
               onMouseLeave={handleMouseLeave}
@@ -119,8 +119,16 @@ function Navbar() {
                 </div>
               )}
             </li>
+
+            {(() => {
+              const userEmail = (user?.email || user?.user?.email || user?.user_metadata?.email)?.toLowerCase().trim();
+              const isAdmin = userEmail && ['contact@conseiluxtraining.com', 'lionesspretty7@gmail.com'].includes(userEmail);
+              return isAdmin && (
+                <li><Link to="/admin" className="admin-link">Page Admin</Link></li>
+              );
+            })()}
           </ul>
-          
+
           <div className="navbar-actions">
             {isAuthenticated ? (
               <button className="btn-logout" onClick={handleLogout}>Déconnexion</button>
@@ -142,7 +150,7 @@ function Navbar() {
         <div className="mobile-menu-header">
           <Link to="/" className="mobile-logo" onClick={closeMobileMenu}>
             <img src="/logo.jpeg" alt="Logo" />
-            <span>English Training</span>
+            <span>Conseilux Language Academy</span>
           </Link>
           <button className="close-menu-btn" onClick={closeMobileMenu} aria-label="Fermer le menu">
             <span></span>
@@ -153,7 +161,14 @@ function Navbar() {
 
         <ul className="mobile-menu-list">
           <li><Link to="/" onClick={closeMobileMenu}>Accueil</Link></li>
-          
+          {(() => {
+            const userEmail = (user?.email || user?.user?.email || user?.user_metadata?.email)?.toLowerCase().trim();
+            const isAdmin = userEmail && ['contact@conseiluxtraining.com', 'lionesspretty7@gmail.com'].includes(userEmail);
+            return isAdmin && (
+              <li><Link to="/admin" onClick={closeMobileMenu} className="mobile-admin-link">Page Admin</Link></li>
+            );
+          })()}
+
           <li className={`mobile-dropdown ${activeDropdown === 'ressources' ? 'active' : ''}`}>
             <button onClick={() => toggleMobileDropdown('ressources')}>
               Ressources
@@ -168,7 +183,7 @@ function Navbar() {
               </ul>
             )}
           </li>
-          
+
           <li className={`mobile-dropdown ${activeDropdown === 'apropos' ? 'active' : ''}`}>
             <button onClick={() => toggleMobileDropdown('apropos')}>
               À propos
@@ -183,7 +198,7 @@ function Navbar() {
               </ul>
             )}
           </li>
-          
+
           <li className={`mobile-dropdown ${activeDropdown === 'plus' ? 'active' : ''}`}>
             <button onClick={() => toggleMobileDropdown('plus')}>
               Plus

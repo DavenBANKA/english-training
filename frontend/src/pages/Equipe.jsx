@@ -7,7 +7,7 @@ function Equipe() {
   return (
     <div className="page">
       <Navbar />
-      
+
       <section className="page-hero">
         <div className="page-hero-content">
           <h1 className="page-title">L'équipe</h1>
@@ -22,8 +22,8 @@ function Equipe() {
           <div className="content-section">
             <h2>Notre mission</h2>
             <p>
-              Chez English Training, nous croyons que l'apprentissage de l'anglais doit être accessible à tous. 
-              Notre équipe d'experts en pédagogie et en technologie travaille chaque jour pour vous offrir 
+              Chez Conseilux Language Academy, nous croyons que l'apprentissage de l'anglais doit être accessible à tous.
+              Notre équipe d'experts en pédagogie et en technologie travaille chaque jour pour vous offrir
               les meilleurs outils d'évaluation et de formation.
             </p>
           </div>
