@@ -1,6 +1,6 @@
 import express from 'express';
 import { body } from 'express-validator';
-import { validate } from '../middlewares/validation.middleware.js';
+import { handleValidationErrors } from '../middlewares/validation.middleware.js';
 import logger from '../config/logger.js';
 
 const router = express.Router();
@@ -16,7 +16,7 @@ router.post(
     body('lastName').trim().notEmpty().withMessage('Le nom est requis'),
     body('email').isEmail().normalizeEmail().withMessage('Email invalide'),
     body('country').trim().notEmpty().withMessage('Le pays est requis'),
-    validate
+    handleValidationErrors
   ],
   async (req, res) => {
     try {
