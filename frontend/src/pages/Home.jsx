@@ -5,6 +5,7 @@ import './Home.css'
 
 // Lazy load des sections non critiques
 const LevelsSection = lazy(() => import('../components/LevelsSection'))
+const CourseSignupSection = lazy(() => import('../components/CourseSignupSection'))
 const HowItWorksSection = lazy(() => import('../components/HowItWorksSection'))
 const ForWhoSection = lazy(() => import('../components/ForWhoSection'))
 const WhyTestSection = lazy(() => import('../components/WhyTestSection'))
@@ -18,6 +19,7 @@ function Home() {
       <HeroSection />
       <Suspense fallback={<div className="section-loading"></div>}>
         <LevelsSection />
+        <CourseSignupSection />
         <HowItWorksSection />
         <ForWhoSection />
         <WhyTestSection />

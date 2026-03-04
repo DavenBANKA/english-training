@@ -26,6 +26,7 @@ import answersRoutes from './routes/answers.routes.js';
 import resultsRoutes from './routes/results.routes.js';
 import adminRoutes from './routes/admin.routes.js';
 import testRoutes from './routes/test.routes.js';
+import contactRoutes from './routes/contact.routes.js';
 
 // Middlewares
 import { errorHandler, notFound } from './middlewares/error.middleware.js';
@@ -77,6 +78,7 @@ apiRouter.use('/writing', writingRoutes);
 apiRouter.use('/answers', answersRoutes);
 apiRouter.use('/results', resultsRoutes);
 apiRouter.use('/admin', adminRoutes);
+apiRouter.use('/contact', contactRoutes);
 
 // Utilisation du routeur avec le préfixe /api (SANS middlewares de sécurité complexes)
 app.use('/api', apiRouter);
