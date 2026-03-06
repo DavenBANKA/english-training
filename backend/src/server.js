@@ -8,7 +8,7 @@ app.listen(PORT, () => {
   console.log(`📍 Health check: http://localhost:${PORT}/health`);
   console.log(`🔐 Environment: ${process.env.NODE_ENV || 'development'}`);
 
-  // Activer le ping automatique en production
+  // Activer le keep-alive en production
   if (process.env.NODE_ENV === 'production') {
     keepAlive();
   }
