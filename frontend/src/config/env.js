@@ -1,17 +1,12 @@
 // Configuration des URLs selon l'environnement
 const getApiUrl = () => {
-  // 1. Priorité à la variable d'environnement (configurée sur Render)
-  if (import.meta.env.VITE_API_URL) {
-    return import.meta.env.VITE_API_URL;
-  }
-
-  // 2. Fallbacks de production
+  // En production, utiliser l'URL relative (monolithe)
+  // Le backend sert le frontend et l'API sur le même domaine
   if (import.meta.env.PROD) {
-    // Dans un déploiement monolithique, l'API est sur le même domaine
     return '/api';
   }
 
-  // 3. Développement local
+  // En développement local
   return 'http://localhost:3000/api';
 };
 
