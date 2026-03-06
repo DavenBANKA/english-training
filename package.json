@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "npm install && cd frontend && npm install && npm run build && cd ../backend && npm install",
-    "build:all": "cd frontend && npm ci && npm run build && cd ../backend && npm ci",
+    "build:all": "cd frontend && npm install && npm run build && cd ../backend && npm install",
     "start": "cd backend && npm start",
     "dev:backend": "cd backend && npm run dev",
     "dev:frontend": "cd frontend && npm run dev"
