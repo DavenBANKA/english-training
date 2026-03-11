@@ -2,12 +2,13 @@ import express from 'express';
 import { body } from 'express-validator';
 import { handleValidationErrors } from '../middlewares/validation.middleware.js';
 import logger from '../config/logger.js';
+import { supabaseAdmin } from '../config/supabase.js';
 
 const router = express.Router();
 
 /**
  * POST /api/contact/course-signup
- * Envoie un email pour une inscription aux cours
+ * Enregistre une inscription aux cours
  */
 router.post(
   '/course-signup',
@@ -31,14 +32,19 @@ router.post(
         timestamp: new Date().toISOString()
       });
 
-      // En production, vous pouvez utiliser un service d'email comme:
-      // - SendGrid
-      // - Mailgun
-      // - AWS SES
-      // - Nodemailer avec SMTP
-      
-      // Pour l'instant, on log juste les informations
-      // Le frontend utilisera mailto: pour ouvrir le client email
+      // Enregistrer dans la base de données
+      const { error } = await supabaseAdmin
+        .from('course_signups')
+        .insert([{
+          first_name: firstName,
+          last_name: lastName,
+          email: email,
+          country: country
+        }]);
+
+      if (error) {
+        throw error;
+      }
 
       res.json({
         success: true,

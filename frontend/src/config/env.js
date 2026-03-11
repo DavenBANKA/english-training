@@ -11,4 +11,4 @@ const getApiUrl = () => {
 };
 
 export const API_BASE_URL = getApiUrl();
-export const API_URL = API_BASE_URL; // Alias pour compatibilité
+export const API_URL = API_BASE_URL; // Alias pour compatibilitéac

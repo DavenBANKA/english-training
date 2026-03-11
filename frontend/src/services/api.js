@@ -148,6 +148,19 @@ class ApiService {
   async getAdminUsers() {
     return await this.request('/admin/users');
   }
+
+  async getAdminCourseSignups() {
+    return await this.request('/admin/course-signups');
+  }
+
+  // Course Signup endpoint
+  async submitCourseSignup(formData) {
+    return await this.request('/contact/course-signup', {
+      method: 'POST',
+      skipAuth: true,
+      body: JSON.stringify(formData),
+    });
+  }
 }
 
 export default new ApiService();

@@ -132,14 +132,45 @@
 
 .admin-header {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
     margin-bottom: 40px;
 }
 
 .admin-header h2 {
     font-size: 24px;
     font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.admin-tabs {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    width: 100%;
+}
+
+.admin-tab {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #718096;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.admin-tab:hover {
+    color: #2d3748;
+}
+
+.admin-tab.active {
+    color: var(--accent-orange, #ff6b00);
+    border-bottom: 2px solid var(--accent-orange, #ff6b00);
 }
 
 .user-count {

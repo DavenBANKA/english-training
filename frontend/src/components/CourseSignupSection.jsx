@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import apiService from '../services/api'
 import './CourseSignupSection.css'
 
 function CourseSignupSection() {
@@ -26,36 +27,26 @@ function CourseSignupSection() {
     setSubmitStatus(null)
 
     try {
-      // Créer le contenu de l'email
-      const emailBody = `
-Nouvelle inscription aux cours d'anglais
+      const response = await apiService.submitCourseSignup(formData)
 
-Prénom: ${formData.firstName}
-Nom: ${formData.lastName}
-Email: ${formData.email}
-Pays: ${formData.country}
+      if (response.success) {
+        // Afficher le message de succès
+        setSubmitStatus('success')
 
-Date: ${new Date().toLocaleString('fr-FR')}
-      `.trim()
-
-      // Ouvrir le client email avec mailto
-      const mailtoLink = `mailto:contact@conseiluxtraining.com?subject=${encodeURIComponent('Nouvelle inscription aux cours d\'anglais')}&body=${encodeURIComponent(emailBody)}`
-      window.open(mailtoLink, '_blank')
-
-      // Afficher le message de succès
-      setSubmitStatus('success')
-      
-      // Réinitialiser le formulaire après 2 secondes
-      setTimeout(() => {
-        setFormData({
-          firstName: '',
-          lastName: '',
-          email: '',
-          country: ''
-        })
-        setShowPopup(false)
-        setSubmitStatus(null)
-      }, 2000)
+        // Réinitialiser le formulaire après 2 secondes
+        setTimeout(() => {
+          setFormData({
+            firstName: '',
+            lastName: '',
+            email: '',
+            country: ''
+          })
+          setShowPopup(false)
+          setSubmitStatus(null)
+        }, 2000)
+      } else {
+        throw new Error('Erreur lors de l\'enregistrement')
+      }
 
     } catch (error) {
       console.error('Erreur lors de l\'envoi:', error)
@@ -76,7 +67,7 @@ Date: ${new Date().toLocaleString('fr-FR')}
             <p className="course-signup-description">
               Inscrivez-vous pour recevoir plus d'informations sur nos formations personnalisées
             </p>
-            <button 
+            <button
               className="course-signup-btn"
               onClick={() => setShowPopup(true)}
             >
@@ -89,7 +80,7 @@ Date: ${new Date().toLocaleString('fr-FR')}
       {showPopup && (
         <div className="popup-overlay" onClick={() => setShowPopup(false)}>
           <div className="popup-content" onClick={(e) => e.stopPropagation()}>
-            <button 
+            <button
               className="popup-close"
               onClick={() => setShowPopup(false)}
               aria-label="Fermer"
@@ -169,8 +160,8 @@ Date: ${new Date().toLocaleString('fr-FR')}
                 </div>
               )}
 
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="popup-submit-btn"
                 disabled={isSubmitting}
               >

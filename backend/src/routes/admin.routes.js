@@ -59,4 +59,30 @@ router.get('/users', authenticate, requireAdmin, async (req, res) => {
   }
 });
 
+/**
+ * Route admin pour voir les inscriptions aux cours
+ * GET /api/admin/course-signups
+ */
+router.get('/course-signups', authenticate, requireAdmin, async (req, res) => {
+  try {
+    const { data, error } = await supabaseAdmin
+      .from('course_signups')
+      .select('*')
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+
+    res.json({
+      success: true,
+      data
+    });
+  } catch (error) {
+    console.error('Erreur requete course_signups:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
 export default router;
