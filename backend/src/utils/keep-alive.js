@@ -10,7 +10,7 @@ const keepAlive = () => {
     // 📡 PING RENDER (API)
     const pingUrl = process.env.RENDER_EXTERNAL_URL 
         ? `${process.env.RENDER_EXTERNAL_URL}/health`
-        : 'https://nbbc.training/health';
+        : 'https://english-training-qpse.onrender.com/health';
     
     const API_INTERVAL = 8 * 60 * 1000; // 8 minutes
 
