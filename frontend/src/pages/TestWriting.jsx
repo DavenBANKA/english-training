@@ -69,7 +69,7 @@ function TestWriting() {
       
       // Soumettre chaque rédaction
       for (const [questionId, text] of Object.entries(texts)) {
-        await apiService.analyzeWriting(questionId, text);
+        await apiService.analyzeWriting(testId, questionId, text);
       }
       
       localStorage.setItem('writing_completed', 'true');

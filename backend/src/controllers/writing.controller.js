@@ -10,18 +10,19 @@ class WritingController {
    */
   async analyze(req, res, next) {
     try {
-      const { question_id, text } = req.body;
+      const { test_id, question_id, text } = req.body;
       const userId = req.user.id;
 
-      if (!question_id || !text) {
+      if (!test_id || !question_id || !text) {
         return res.status(400).json({
           success: false,
-          error: 'question_id et text requis'
+          error: 'test_id, question_id et text requis'
         });
       }
 
       const result = await writingService.analyzeResponse(
         userId,
+        test_id,
         question_id,
         text
       );

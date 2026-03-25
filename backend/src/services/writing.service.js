@@ -8,11 +8,12 @@ class WritingService {
   /**
    * Analyse une rédaction
    * @param {string} userId - ID de l'utilisateur
+   * @param {string} testId - ID du test
    * @param {string} questionId - ID de la question
    * @param {string} text - Texte écrit par l'utilisateur
    * @returns {Promise<Object>} Résultat de l'analyse
    */
-  async analyzeResponse(userId, questionId, text) {
+  async analyzeResponse(userId, testId, questionId, text) {
     try {
       // Validation de base (relaxée pour développement)
       if (!text || text.trim().length < 10) {
@@ -39,6 +40,7 @@ class WritingService {
         .from('writing_submissions')
         .insert({
           user_id: userId,
+          test_id: testId,
           question_id: questionId,
           original_text: text,
           corrected_text: analysis.corrected_text,

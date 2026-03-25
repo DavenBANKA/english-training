@@ -67,6 +67,9 @@ export const validateLogin = [
  * Validation pour les soumissions Writing
  */
 export const validateWriting = [
+  body('test_id')
+    .notEmpty()
+    .withMessage('ID de test requis'),
   body('question_id')
     .isUUID()
     .withMessage('ID de question invalide'),
@@ -81,6 +84,9 @@ export const validateWriting = [
  * Validation pour les soumissions Speaking
  */
 export const validateSpeaking = [
+  body('test_id')
+    .notEmpty()
+    .withMessage('ID de test requis'),
   body('question_id')
     .isUUID()
     .withMessage('ID de question invalide'),

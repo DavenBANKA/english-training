@@ -9,6 +9,7 @@ function Certificate() {
   const [results, setResults] = useState(null);
   const [userName, setUserName] = useState('');
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   const [showShareMenu, setShowShareMenu] = useState(false);
   const [sharing, setSharing] = useState(false);
   const { user } = useAuth();

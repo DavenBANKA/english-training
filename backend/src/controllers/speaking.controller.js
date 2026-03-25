@@ -10,13 +10,13 @@ class SpeakingController {
    */
   async analyze(req, res, next) {
     try {
-      const { question_id } = req.body;
+      const { test_id, question_id } = req.body;
       const userId = req.user.id;
 
-      if (!question_id) {
+      if (!test_id || !question_id) {
         return res.status(400).json({
           success: false,
-          error: 'question_id requis'
+          error: 'test_id et question_id requis'
         });
       }
 
@@ -30,6 +30,7 @@ class SpeakingController {
       // Analyser directement sans upload
       const result = await speakingService.analyzeResponseDirect(
         userId,
+        test_id,
         question_id,
         req.file.buffer
       );

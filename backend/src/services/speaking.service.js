@@ -8,11 +8,12 @@ class SpeakingService {
   /**
    * Analyse une réponse orale sans upload (transcription + analyse directe)
    * @param {string} userId - ID de l'utilisateur
+   * @param {string} testId - ID du test
    * @param {string} questionId - ID de la question
    * @param {Buffer} audioBuffer - Buffer de l'audio pour transcription
    * @returns {Promise<Object>} Résultat de l'analyse
    */
-  async analyzeResponseDirect(userId, questionId, audioBuffer) {
+  async analyzeResponseDirect(userId, testId, questionId, audioBuffer) {
     try {
       // Récupérer la question
       const { data: question, error: questionError } = await supabase
@@ -38,6 +39,7 @@ class SpeakingService {
         .from('speaking_submissions')
         .insert({
           user_id: userId,
+          test_id: testId,
           question_id: questionId,
           audio_url: null, // Pas de stockage audio
           transcript: transcript,

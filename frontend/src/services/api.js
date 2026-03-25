@@ -117,10 +117,10 @@ class ApiService {
   }
 
   // Writing endpoints
-  async analyzeWriting(question_id, text) {
+  async analyzeWriting(test_id, question_id, text) {
     return await this.request('/writing/analyze', {
       method: 'POST',
-      body: JSON.stringify({ question_id, text }),
+      body: JSON.stringify({ test_id, question_id, text }),
     });
   }
 

@@ -139,6 +139,11 @@ function TestSpeaking() {
       const formData = new FormData();
       formData.append('audio', blob, 'recording.wav');
       formData.append('question_id', currentQuestion.id);
+      
+      const testId = localStorage.getItem('current_test_id');
+      if (testId) {
+        formData.append('test_id', testId);
+      }
 
       const response = await apiService.analyzeSpeaking(formData);
       

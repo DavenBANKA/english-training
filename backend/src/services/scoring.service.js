@@ -75,8 +75,11 @@ class ScoringService {
    */
   async calculateOverallResult(userId, testId) {
     try {
-      // Récupérer tous les scores par skill
-      const { data: answers, error } = await supabase
+      const skillScores = {};
+      const skills = ['reading', 'listening', 'speaking', 'writing'];
+
+      // 1. Récupérer Reading & Listening (user_answers)
+      const { data: mcqAnswers, error: mcqError } = await supabase
         .from('user_answers')
         .select(`
           *,
@@ -88,15 +91,12 @@ class ScoringService {
         .eq('user_id', userId)
         .eq('test_id', testId);
 
-      if (error) throw error;
+      if (mcqError) throw mcqError;
 
-      // Grouper par skill
-      const skillScores = {};
-      const skills = ['reading', 'listening', 'speaking', 'writing'];
-
-      for (const skill of skills) {
-        const skillAnswers = answers.filter(
-          a => a.questions.skills.name.toLowerCase() === skill
+      // Grouper Reading & Listening
+      ['reading', 'listening'].forEach(skill => {
+        const skillAnswers = mcqAnswers.filter(
+          a => a.questions?.skills?.name.toLowerCase() === skill
         );
 
         if (skillAnswers.length > 0) {
@@ -105,15 +105,55 @@ class ScoringService {
             score: Math.round(avgScore),
             cefr_level: this.scoreToCEFR(avgScore)
           };
+        } else {
+          skillScores[skill] = { score: 0, cefr_level: 'A1' };
         }
+      });
+
+      // 2. Récupérer Writing Submissions
+      const { data: writingSubs, error: writingError } = await supabase
+        .from('writing_submissions')
+        .select('*')
+        .eq('user_id', userId)
+        .eq('test_id', testId);
+
+      if (writingError) throw writingError;
+
+      if (writingSubs.length > 0) {
+        const avgScore = writingSubs.reduce((sum, s) => sum + (s.overall_score || 0), 0) / writingSubs.length;
+        skillScores.writing = {
+          score: Math.round(avgScore),
+          cefr_level: this.scoreToCEFR(avgScore)
+        };
+      } else {
+        skillScores.writing = { score: 0, cefr_level: 'A1' };
       }
 
-      // Score global (moyenne des 4 skills)
+      // 3. Récupérer Speaking Submissions
+      const { data: speakingSubs, error: speakingError } = await supabase
+        .from('speaking_submissions')
+        .select('*')
+        .eq('user_id', userId)
+        .eq('test_id', testId);
+
+      if (speakingError) throw speakingError;
+
+      if (speakingSubs.length > 0) {
+        const avgScore = speakingSubs.reduce((sum, s) => sum + (s.overall_score || 0), 0) / speakingSubs.length;
+        skillScores.speaking = {
+          score: Math.round(avgScore),
+          cefr_level: this.scoreToCEFR(avgScore)
+        };
+      } else {
+        skillScores.speaking = { score: 0, cefr_level: 'A1' };
+      }
+
+      // 4. Calcul Score global
       const scores = Object.values(skillScores).map(s => s.score);
       const overallScore = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
       const overallCEFR = this.scoreToCEFR(overallScore);
 
-      // Sauvegarder le résultat
+      // 5. Sauvegarder le résultat final
       const { data: result, error: resultError } = await supabase
         .from('results')
         .insert({
