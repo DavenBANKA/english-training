@@ -35,8 +35,8 @@ function Login() {
       <div className="auth-box">
         <div className="auth-header">
           <Link to="/" className="auth-logo">
-            <img src="/logo.jpeg" alt="Conseilux Language Academy" />
-            <span>Conseilux Language Academy</span>
+            <img src="/nbbc.PNG" alt="NBBC Language Academy" />
+            <span>NBBC Language Academy</span>
           </Link>
           <h1>Connexion</h1>
           <p>Connectez-vous pour accéder à votre compte</p>

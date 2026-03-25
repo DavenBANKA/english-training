@@ -44,7 +44,7 @@ function HeroSection() {
             <button className="btn-secondary" onClick={() => navigate('/comment-ca-marche')}>En savoir plus</button>
             {(() => {
               const userEmail = (user?.email || user?.user?.email || user?.user_metadata?.email)?.toLowerCase().trim();
-              const isAdmin = userEmail && ['contact@conseiluxtraining.com', 'lionesspretty7@gmail.com'].includes(userEmail);
+              const isAdmin = userEmail && ['nbbcsolution@gmail.com', 'lionesspretty7@gmail.com'].includes(userEmail);
               return isAdmin && (
                 <button className="btn-admin-hero" onClick={() => navigate('/admin')}>Page Admin</button>
               );

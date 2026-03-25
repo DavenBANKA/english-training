@@ -12,7 +12,7 @@ function Entreprise() {
         <div className="page-hero-content">
           <h1 className="page-title">L'entreprise</h1>
           <p className="page-subtitle">
-            Conseilux Language Academy, votre partenaire pour l'apprentissage de l'anglais
+            NBBC Language Academy, votre partenaire pour l'apprentissage de l'anglais
           </p>
         </div>
       </section>
@@ -22,7 +22,7 @@ function Entreprise() {
           <div className="content-section">
             <h2>Qui sommes-nous ?</h2>
             <p>
-              Conseilux Language Academy est une plateforme innovante dédiée à l'évaluation et à la formation en anglais.
+              NBBC Language Academy est une plateforme innovante dédiée à l'évaluation et à la formation en anglais.
               Fondée en 2020, nous avons déjà accompagné plus de 50 000 apprenants dans leur parcours linguistique.
             </p>
           </div>

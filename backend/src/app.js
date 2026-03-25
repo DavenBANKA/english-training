@@ -62,7 +62,7 @@ app.use(express.urlencoded({ extended: true, limit: '50mb' }));
 app.get('/health', (req, res) => {
   res.json({
     success: true,
-    message: 'API EFSET opérationnelle (Mode Simplifié)',
+    message: 'API NBBC opérationnelle (Mode Simplifié)',
     timestamp: new Date().toISOString()
   });
 });

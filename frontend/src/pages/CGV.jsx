@@ -16,12 +16,12 @@ function CGV() {
         <div className="page-body">
           <section className="legal-section">
             <h2>Article 1 - Objet</h2>
-            <p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre Conseilux Language Academy, ci-après dénommée "le Prestataire", et toute personne physique ou morale, ci-après dénommée "le Client", souhaitant accéder aux services proposés sur le site englishtraining.fr.</p>
+            <p>Les présentes Conditions Générales de Vente (CGV) régissent les relations contractuelles entre NBBC Language Academy, ci-après dénommée "le Prestataire", et toute personne physique ou morale, ci-après dénommée "le Client", souhaitant accéder aux services proposés sur le site englishtraining.fr.</p>
           </section>
 
           <section className="legal-section">
             <h2>Article 2 - Services proposés</h2>
-            <p>Conseilux Language Academy propose les services suivants :</p>
+            <p>NBBC Language Academy propose les services suivants :</p>
             <ul>
               <li><strong>Tests d'anglais en ligne :</strong> évaluation du niveau d'anglais selon le référentiel CECRL (A1 à C2)</li>
               <li><strong>Formations en anglais :</strong> cours et programmes de formation personnalisés</li>
@@ -148,7 +148,7 @@ function CGV() {
 
           <section className="legal-section">
             <h2>Article 13 - Propriété intellectuelle</h2>
-            <p>Tous les contenus du site (textes, images, vidéos, questions de test, etc.) sont la propriété exclusive de Conseilux Language Academy.</p>
+            <p>Tous les contenus du site (textes, images, vidéos, questions de test, etc.) sont la propriété exclusive de NBBC Language Academy.</p>
             <p>Toute reproduction, même partielle, est strictement interdite sans autorisation écrite préalable.</p>
           </section>
 
@@ -160,9 +160,9 @@ function CGV() {
           <section className="legal-section">
             <h2>Article 15 - Réclamations</h2>
             <p>Pour toute réclamation, le Client peut contacter le service client :</p>
-            <p><strong>Email :</strong> contact@conseiluxtraining.com</p>
-            <p><strong>Téléphone (Fr) :</strong> +33 745644181</p>
-            <p><strong>Téléphone (Ben) :</strong> +229 01 96 37 17 07</p>
+            <p><strong>Email :</strong> nbbcsolution@gmail.com</p>
+            <p><strong>Téléphone (Fr) :</strong> +33 7 57 75 57 71</p>
+            <p><strong>Téléphone (Togo) :</strong> (+228) 98901032</p>
             <p><strong>Délai de réponse :</strong> 48 heures ouvrées</p>
           </section>
 
@@ -186,12 +186,12 @@ function CGV() {
 
           <section className="legal-section">
             <h2>Contact</h2>
-            <p><strong>Conseilux Language Academy</strong></p>
+            <p><strong>NBBC Language Academy</strong></p>
             <p>123 Avenue des Champs-Élysées</p>
             <p>75008 Paris, France</p>
-            <p>Email : contact@conseiluxtraining.com</p>
-            <p>Téléphone (Fr) : +33 745644181</p>
-            <p>Téléphone (Ben) : +229 01 96 37 17 07</p>
+            <p>Email : nbbcsolution@gmail.com</p>
+            <p>Téléphone (Fr) : +33 7 57 75 57 71</p>
+            <p>Téléphone (Togo) : (+228) 98901032</p>
             <p>RCS Paris B 123 456 789</p>
           </section>
         </div>

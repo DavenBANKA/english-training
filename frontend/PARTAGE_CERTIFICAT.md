@@ -24,9 +24,9 @@ Bouton "📤 Partager" avec menu déroulant pour LinkedIn et WhatsApp.
 
 **Message suggéré:**
 ```
-🎓 Fier d'avoir obtenu mon certificat EFSET avec un score de XX/100!
+🎓 Fier d'avoir obtenu mon certificat NBBC avec un score de XX/100!
 
-#EFSET #Anglais #Certification #Formation #ConseiluxTraining
+#NBBC #Anglais #Certification #Formation #NBBCTraining
 ```
 
 ### 3. Partage WhatsApp
@@ -43,7 +43,7 @@ Bouton "📤 Partager" avec menu déroulant pour LinkedIn et WhatsApp.
 
 **Message pré-rempli:**
 ```
-🎓 J'ai obtenu mon certificat EFSET avec un score de XX/100!
+🎓 J'ai obtenu mon certificat NBBC avec un score de XX/100!
 ```
 
 ## 🔧 Technique
@@ -68,7 +68,7 @@ const imageData = canvas.toDataURL('image/png');
 ### Téléchargement
 ```javascript
 const link = document.createElement('a');
-link.download = `Certificat_EFSET_${userName}.png`;
+link.download = `Certificat_NBBC_${userName}.png`;
 link.href = imageData;
 link.click();
 ```
@@ -125,7 +125,7 @@ link.click();
 ```javascript
 if (navigator.share) {
   await navigator.share({
-    title: 'Mon Certificat EFSET',
+    title: 'Mon Certificat NBBC',
     text: 'J\'ai obtenu mon certificat!',
     files: [imageFile]
   });

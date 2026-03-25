@@ -52,8 +52,8 @@ function Navbar() {
       <nav className="navbar-container">
         <div className="navbar">
           <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
-            <img src="/logo.jpeg" alt="Logo" className="logo-img" />
-            <span className="logo-text">Conseilux Language Academy</span>
+            <img src="/nbbc.PNG" alt="Logo" className="logo-img" />
+            <span className="logo-text">NBBC Language Academy</span>
           </Link>
 
           {/* Hamburger Button */}
@@ -122,7 +122,7 @@ function Navbar() {
 
             {(() => {
               const userEmail = (user?.email || user?.user?.email || user?.user_metadata?.email)?.toLowerCase().trim();
-              const isAdmin = userEmail && ['contact@conseiluxtraining.com', 'lionesspretty7@gmail.com'].includes(userEmail);
+              const isAdmin = userEmail && ['nbbcsolution@gmail.com', 'lionesspretty7@gmail.com'].includes(userEmail);
               return isAdmin && (
                 <li><Link to="/admin" className="admin-link">Page Admin</Link></li>
               );
@@ -149,8 +149,8 @@ function Navbar() {
       <div className={`mobile-menu ${mobileMenuOpen ? 'open' : ''}`}>
         <div className="mobile-menu-header">
           <Link to="/" className="mobile-logo" onClick={closeMobileMenu}>
-            <img src="/logo.jpeg" alt="Logo" />
-            <span>Conseilux Language Academy</span>
+            <img src="/nbbc.PNG" alt="Logo" />
+            <span>NBBC Language Academy</span>
           </Link>
           <button className="close-menu-btn" onClick={closeMobileMenu} aria-label="Fermer le menu">
             <span></span>
@@ -163,7 +163,7 @@ function Navbar() {
           <li><Link to="/" onClick={closeMobileMenu}>Accueil</Link></li>
           {(() => {
             const userEmail = (user?.email || user?.user?.email || user?.user_metadata?.email)?.toLowerCase().trim();
-            const isAdmin = userEmail && ['contact@conseiluxtraining.com', 'lionesspretty7@gmail.com'].includes(userEmail);
+            const isAdmin = userEmail && ['nbbcsolution@gmail.com', 'lionesspretty7@gmail.com'].includes(userEmail);
             return isAdmin && (
               <li><Link to="/admin" onClick={closeMobileMenu} className="mobile-admin-link">Page Admin</Link></li>
             );

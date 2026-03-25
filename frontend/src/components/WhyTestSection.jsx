@@ -20,7 +20,7 @@ function WhyTestSection() {
         <div className="why-test-content">
           <div className="left-content">
             <h2 className="why-test-title">
-              Pourquoi faire ce<br />test avec Conseilux Language Academy ?
+              Pourquoi faire ce<br />test avec NBBC Language Academy ?
             </h2>
 
             <ul className="why-test-list">

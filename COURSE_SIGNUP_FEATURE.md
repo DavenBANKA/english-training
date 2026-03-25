@@ -25,7 +25,7 @@ Lorsque l'utilisateur valide le formulaire :
 
 1. **Ouverture du client email** : Un lien `mailto:` s'ouvre automatiquement
 2. **Email pré-rempli** :
-   - Destinataire : `contact@conseiluxtraining.com`
+   - Destinataire : `nbbcsolution@gmail.com`
    - Sujet : "Nouvelle inscription aux cours d'anglais"
    - Corps : Toutes les informations du formulaire formatées
 
@@ -75,7 +75,7 @@ Pour qui
 5. Il remplit ses informations
 6. Il clique sur "Envoyer ma demande"
 7. Son client email s'ouvre avec l'email pré-rempli
-8. Il envoie l'email à contact@conseiluxtraining.com
+8. Il envoie l'email à nbbcsolution@gmail.com
 
 ## 🔄 Alternative : Service d'Email Automatique
 
@@ -131,7 +131,7 @@ Pour modifier le design :
 ### Email de destination
 ```jsx
 /* CourseSignupSection.jsx */
-const mailtoLink = `mailto:contact@conseiluxtraining.com?...`
+const mailtoLink = `mailto:nbbcsolution@gmail.com?...`
 ```
 
 ## ✅ Checklist

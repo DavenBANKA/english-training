@@ -15,7 +15,7 @@ function Admin() {
 
     useEffect(() => {
         // Sécurité supplémentaire côté frontend
-        const adminEmails = ['contact@conseiluxtraining.com', 'lionesspretty7@gmail.com'];
+        const adminEmails = ['nbbcsolution@gmail.com', 'lionesspretty7@gmail.com'];
         if (!isAuthenticated || !adminEmails.includes(user?.email)) {
             navigate('/');
             return;
@@ -46,7 +46,7 @@ function Admin() {
         }
     };
 
-    const adminEmails = ['contact@conseiluxtraining.com', 'lionesspretty7@gmail.com'];
+    const adminEmails = ['nbbcsolution@gmail.com', 'lionesspretty7@gmail.com'];
     if (!isAuthenticated || !adminEmails.includes(user?.email)) {
         return null;
     }
@@ -55,8 +55,8 @@ function Admin() {
         <div className="admin-page">
             <div className="admin-left">
                 <div className="admin-branding">
-                    <img src="/logo.jpeg" alt="Logo" className="admin-logo-img" />
-                    <h1>Conseilux<br />Language Academy</h1>
+                    <img src="/nbbc.PNG" alt="Logo" className="admin-logo-img" />
+                    <h1>NBBC<br />Language Academy</h1>
                 </div>
 
                 <div className="admin-security-info">

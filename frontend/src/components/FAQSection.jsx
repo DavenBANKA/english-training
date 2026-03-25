@@ -7,11 +7,11 @@ function FAQSection() {
   const faqs = [
     {
       question: "Quel est le meilleur test de niveau d'anglais ?",
-      answer: "Notre test Conseilux Language Academy est aligné sur les référentiels CECRL (A1 à C2) et offre une évaluation complète de vos 4 compétences : Listening, Reading, Writing et Speaking. Il est rapide (10-15 minutes) et utilise l'IA pour analyser vos réponses écrites et orales."
+      answer: "Notre test NBBC Language Academy est aligné sur les référentiels CECRL (A1 à C2) et offre une évaluation complète de vos 4 compétences : Listening, Reading, Writing et Speaking. Il est rapide (10-15 minutes) et utilise l'IA pour analyser vos réponses écrites et orales."
     },
     {
-      question: "Le test de niveau d'anglais Conseilux Language Academy est-il gratuit ?",
-      answer: "Le test nécessite une inscription gratuite pour sauvegarder vos résultats et générer votre certificat personnalisé. Une fois inscrit, vous pouvez passer le test complet et accéder à votre certificat détaillé avec vos scores par compétence."
+      question: "Le test de niveau d'anglais NBBC Language Academy est-il gratuit ?",
+      answer: "Le test nécessite une inscription gratuite pour sauvegarder vos résultats et générer votre certificat personnalisé. Une fois inscrit, vous pouvez passer le test complet et accéder à votre certificat détaillé with vos scores par compétence."
     },
     {
       question: "Combien de temps dure le test ?",

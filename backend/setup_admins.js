@@ -20,7 +20,7 @@ const supabaseAdmin = createClient(supabaseUrl, supabaseServiceRoleKey, {
 });
 
 const admins = [
-    { email: 'contact@conseiluxtraining.com', password: '@conseilux228', full_name: 'Admin Conseilux' },
+    { email: 'nbbcsolution@gmail.com', password: '@nbbc228', full_name: 'Admin NBBC' },
     { email: 'lionesspretty7@gmail.com', password: 'malikapretty7', full_name: 'Admin Lioness' }
 ];
 

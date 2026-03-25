@@ -22,7 +22,7 @@ function Equipe() {
           <div className="content-section">
             <h2>Notre mission</h2>
             <p>
-              Chez Conseilux Language Academy, nous croyons que l'apprentissage de l'anglais doit être accessible à tous.
+              Chez NBBC Language Academy, nous croyons que l'apprentissage de l'anglais doit être accessible à tous.
               Notre équipe d'experts en pédagogie et en technologie travaille chaque jour pour vous offrir
               les meilleurs outils d'évaluation et de formation.
             </p>

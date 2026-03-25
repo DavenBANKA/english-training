@@ -22,7 +22,7 @@ function Entreprises() {
           <div className="content-section">
             <h2>Évaluez et formez vos collaborateurs</h2>
             <p>
-              Conseilux Language Academy propose des solutions sur mesure pour les entreprises souhaitant évaluer
+              NBBC Language Academy propose des solutions sur mesure pour les entreprises souhaitant évaluer
               et améliorer le niveau d'anglais de leurs équipes.
             </p>
           </div>

@@ -86,7 +86,7 @@ function Certificate() {
 
     // Télécharger l'image pour que l'utilisateur puisse l'uploader sur LinkedIn
     const link = document.createElement('a');
-    link.download = `Certificat_EFSET_${userName.replace(/\s+/g, '_')}.png`;
+    link.download = `Certificat_NBBC_${userName.replace(/\s+/g, '_')}.png`;
     link.href = imageData;
     link.click();
 
@@ -104,13 +104,13 @@ function Certificate() {
 
     // Télécharger l'image
     const link = document.createElement('a');
-    link.download = `Certificat_EFSET_${userName.replace(/\s+/g, '_')}.png`;
+    link.download = `Certificat_NBBC_${userName.replace(/\s+/g, '_')}.png`;
     link.href = imageData;
     link.click();
 
     // Ouvrir WhatsApp Web
     setTimeout(() => {
-      const text = encodeURIComponent(`🎓 J'ai obtenu mon certificat EFSET avec un score de ${results.overall_score}/100!`);
+      const text = encodeURIComponent(`🎓 J'ai obtenu mon certificat NBBC avec un score de ${results.overall_score}/100!`);
       const whatsappUrl = `https://web.whatsapp.com/send?text=${text}`;
       window.open(whatsappUrl, '_blank');
       alert('Image téléchargée! Partagez-la sur WhatsApp.');
@@ -173,7 +173,7 @@ function Certificate() {
 
         {/* Header */}
         <header className="certificate-header">
-          <h1 className="title-font platform-name">CONSEILUX LANGUAGE ACADEMY</h1>
+          <h1 className="title-font platform-name">NBBC LANGUAGE ACADEMY</h1>
           <div className="ornamental-line"></div>
           <p className="subtitle-text">CENTRE DE FORMATION PROFESSIONNELLE</p>
         </header>
@@ -247,12 +247,12 @@ function Certificate() {
           <div className="signature-line"></div>
           <p className="subtitle-font director-name">Ghislain CODJO</p>
           <p className="director-title">Directeur Général</p>
-          <p className="company-name">Conseilux Language Academy</p>
+          <p className="company-name">NBBC Language Academy</p>
         </footer>
 
         {/* Decorative Seal */}
         <img
-          src="/logo.jpeg"
+          src="/nbbc.PNG"
           alt="Logo"
           className="seal"
         />

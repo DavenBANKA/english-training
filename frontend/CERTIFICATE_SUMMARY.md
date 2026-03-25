@@ -23,8 +23,8 @@
 
 ### Informations Affichées
 - ✅ **Nom de l'étudiant** (full_name depuis le profil)
-- ✅ **Nom de la plateforme**: CONSEILUX TRAINING AND DEVELOPMENT
-- ✅ **Nom du cours**: EFSET English Proficiency Assessment
+- ✅ **Nom de la plateforme**: NBBC TRAINING AND DEVELOPMENT
+- ✅ **Nom du cours**: NBBC English Proficiency Assessment
 - ✅ **4 scores détaillés**:
   - Listening (%)
   - Reading (%)
@@ -160,7 +160,7 @@ setResults(resultsResponse.data[0]);
 - Nom de la plateforme
 - Nom du directeur
 - Titre du directeur
-- Nom du cours
+- Nom du cours (NBBC)
 - Couleurs (accent, texte, fond)
 - Polices
 

@@ -9,7 +9,7 @@ const keepAlive = () => {
     // Utiliser l'URL fournie par Render ou fallback vers l'URL configurée
     const pingUrl = process.env.RENDER_EXTERNAL_URL 
         ? `${process.env.RENDER_EXTERNAL_URL}/health`
-        : 'https://conseiluxlanguage.org/health';
+        : 'https://nbbc.training/health';
     
     const INTERVAL = 8 * 60 * 1000; // 8 minutes
 
